@@ -1,19 +1,18 @@
-from __future__ import annotations
-
+import json
+import time
 from typing import Dict, Any
 
+import redis
+from rq import Queue
 
-class OrchestratorService:
-    def __init__(self) -> None:
-        self.agents = []
+from core.config import settings
+from pathlib import Path
 
-    def load_agents(self, items: list[dict[str, Any]]) -> None:
-        self.agents = items
+AGENTS_FILE = Path(__file__).resolve().parents[1] / "agents" / "agents.yaml"
 
-    def run(self, brief: Dict[str, Any]) -> Dict[str, Any]:
-        return {
-            "status": "queued",
-            "project_name": brief.get("project_name", "Untitled"),
-            "agents": [agent.get("name") for agent in self.agents],
-            "summary": "Workflow orchestration initialized successfully.",
-        }
+
+def enqueue_orchestration(brief: Dict[str, Any]) -> Dict[str, Any]:
+    r = redis.Redis.from_url(settings.redis_url)
+    q = Queue("default", connection=r)
+    job = q.enqueue("services.orchestrator_worker.process_brief", brief)
+    return {"status": "queued", "job_id": job.get_id()}

@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Any, Dict
+from fastapi import Depends
+from core.config import settings
+from api.routes import health
+from api.routes import auth
 
 app = FastAPI(title="NEXUS AI Agency API", version="1.0.0")
 
@@ -13,31 +15,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-class AgentRequest(BaseModel):
-    agent_name: str
-    client_brief: Dict[str, Any]
+# include routers
+app.include_router(health.router)
+app.include_router(auth.router)
 
 
 @app.get("/")
-def root() -> Dict[str, str]:
+def root():
     return {"message": "Welcome to NEXUS AI Agency"}
-
-
-@app.get("/health")
-def health() -> Dict[str, str]:
-    return {"status": "ok", "service": "nexus-ai-agency"}
-
-
-@app.post("/api/v1/agents/execute")
-def execute_agent(payload: AgentRequest) -> Dict[str, Any]:
-    return {
-        "status": "success",
-        "agent_name": payload.agent_name,
-        "message": "Agent executed successfully.",
-        "result": {
-            "project_name": payload.client_brief.get("project_name", "Untitled"),
-            "summary": "The agent received the project brief and is ready for orchestration.",
-            "next_step": "Build execution plan and return structured output.",
-        },
-    }
