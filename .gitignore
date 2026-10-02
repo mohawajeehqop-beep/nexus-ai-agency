@@ -1,0 +1,42 @@
+# NEXUS AI Agency
+
+This project is a production-oriented scaffold for a multi-agent AI agency platform.
+
+## Features
+- API-first backend
+- Next.js frontend dashboard
+- PostgreSQL database integration
+- Redis cache support
+- Agent definitions via YAML
+- Docker Compose orchestration
+- Health checks and monitoring hooks
+
+## Local development
+
+```bash
+docker compose up --build -d
+```
+
+## URLs
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- Swagger: http://localhost:8000/docs
+- Health: http://localhost:8000/health
+
+## Default environment values
+
+Backend:
+```env
+APP_NAME=NEXUS AI Agency
+APP_ENV=development
+APP_PORT=8000
+DATABASE_URL=postgresql://nexus_user:nexus_pass@db:5432/nexus
+REDIS_URL=redis://redis:6379/0
+SECRET_KEY=change-me-strong-secret
+OPENAI_API_KEY=your-openai-key
+```
+
+Frontend:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```

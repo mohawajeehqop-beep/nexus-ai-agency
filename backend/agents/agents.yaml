@@ -1,0 +1,81 @@
+agents:
+  - name: feasibility_expert
+    role: validates business viability
+    specialty: market, assumptions, risk
+    priority: 1
+  - name: strategy_planner
+    role: creates go-to-market strategy
+    specialty: roadmap, positioning, runway
+    priority: 2
+  - name: content_creator
+    role: drafts messaging and campaigns
+    specialty: brand, copy, creative concepts
+    priority: 3
+  - name: ops_specialist
+    role: manages delivery and requirements
+    specialty: execution, process, coordination
+    priority: 4
+  - name: qa_validator
+    role: verifies output quality
+    specialty: review, validation, risk checks
+    priority: 5
+  - name: legal_advisor
+    role: checks compliance and risk exposure
+    specialty: contracts, privacy, terms
+    priority: 6
+  - name: finance_analyst
+    role: interprets cost and projection data
+    specialty: pricing, budget, profitability
+    priority: 7
+  - name: data_scientist
+    role: analyses metrics and patterns
+    specialty: insights, experimentation, optimization
+    priority: 8
+  - name: project_manager
+    role: coordinates milestones and dependencies
+    specialty: scheduling, communication, tracking
+    priority: 9
+  - name: customer_success_rep
+    role: supports onboarding and adoption
+    specialty: retention, enablement, support
+    priority: 10
+  - name: growth_hacker
+    role: seeds channels and acquisition loops
+    specialty: campaigns, growth experiments
+    priority: 11
+  - name: ux_researcher
+    role: studies usage and friction
+    specialty: user interviews, journeys
+    priority: 12
+  - name: product_designer
+    role: shapes user experience and flows
+    specialty: UX, UI, prototypes
+    priority: 13
+  - name: sales_expert
+    role: structures offers and pipeline
+    specialty: conversion, sales motion
+    priority: 14
+  - name: technical_architect
+    role: designs system and integrations
+    specialty: infra, APIs, dependencies
+    priority: 15
+  - name: procurement_manager
+    role: coordinates vendors and assets
+    specialty: sourcing, acquisition
+    priority: 16
+  - name: community_manager
+    role: manages communities and engagement
+    specialty: brand engagement, moderation
+    priority: 17
+  - name: data_analyst
+    role: turns metrics into decisions
+    specialty: dashboards, reporting, KPIs
+    priority: 18
+  - name: risk_officer
+    role: identifies operational risk
+    specialty: governance, resilience, controls
+    priority: 19
+  - name: orchestrator
+    role: delegates tasks and coordinates execution
+    specialty: workflow orchestration, task routing
+    priority: 20
